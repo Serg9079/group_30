@@ -1,0 +1,75 @@
+1) Посмотреть, где я - pwd
+2) Создать папку - mkdir q1
+3) Зайти в папку - cd q1
+4) Создать 3 папки - mkdir qq1 qq2 qq3
+5) Зайти в любую папку - cd qq1
+6) Создать 5 файлов (3txt, 2 json) - touch s1.txt s2.txt s3.txt s4.json s5.json
+7) Создать 3 папки - mkdir w1 w2 w3
+8) Вывести список содержимого папки -
+$ ls -la
+total 4
+drwxr-xr-x 1 серей 197121 0 May 23 22:12 ./
+drwxr-xr-x 1 серей 197121 0 May 23 22:08 ../
+-rw-r--r-- 1 серей 197121 0 May 23 22:11 s1.txt
+-rw-r--r-- 1 серей 197121 0 May 23 22:11 s2.txt
+-rw-r--r-- 1 серей 197121 0 May 23 22:11 s3.txt
+-rw-r--r-- 1 серей 197121 0 May 23 22:11 s4.json
+-rw-r--r-- 1 серей 197121 0 May 23 22:11 s5.json
+drwxr-xr-x 1 серей 197121 0 May 23 22:12 w1/
+drwxr-xr-x 1 серей 197121 0 May 23 22:12 w2/
+drwxr-xr-x 1 серей 197121 0 May 23 22:12 w3/
+9) Открыть любой txt.файл vim s1.txt
+10) написать туда что-либо - пишу любой текст
+11) Сохранить и выйти - :wq (либо же можно было сделать аналогичное с помощью комманды cat)
+12) Выйти из папки на уровень выше - cd /d/QA/group_30/q1
+13) Переместить любые 2 файла, которые вы создали в любую др. папку 
+mv qq1/s1.txt qq2/s1.txt
+mv qq1/s2.txt qq2/s2.txt
+14) Cкопировать любые 2 файла, которые вы создали, в любую другую папку
+cp qq1/s3.txt qq1/w1/s3.txt
+cp qq1/s4.json qq1/w1/s4.json
+15) Найти файл по имени - 
+$ find -name s3.txt
+./s3.txt
+16) Просмотреть содержимое в реальном времени - 
+$ tail -f s3.txt
+17) Вывести несколько первых строк из текстового файла
+$ head -3 s3.txt
+dsdddddddddddffffffffffff
+fdgfdgfdkjdfjkbnvkdfnbldfnblfb
+jgbnjgnbjgnbjgnbjgnbjgnb
+18) Вывести несколько последних строк из текстового файла
+$ tail -2 s3.txt
+dfnvnnf,d,,d,m
+mdfmvkmdfkvkvmmkvfm
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает
+$ tail -f s3.txt
+20) вывести дату и время
+$ date
+Wed May 25 22:06:14 RTZ 2022
+
+Задание*
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+$ curl "http://162.55.220.72:5005/get_method?name=Sergey&age=29"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    24  100    24    0     0    262      0 --:--:-- --:--:-- --:--:--   266[
+  "Sergey",
+  "29"
+]
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+vim scripts.sh
+#!/bin/bash
+cd qq1;
+mkdir T1 T2 T3;
+cd T1;
+touch Q1.txt Q2.txt Q3.txt q4.json q5.json;
+mkdir FOLDER1 FOLDER2 FOLDER3;
+ls -la;
+pwd
+mv /d/QA/group_30/q1/qq1/T1/Q2.txt /d/QA/group_30/q1/qq1/T1/FOLDER1/Q2.txt
+mv /d/QA/group_30/q1/qq1/T1/Q3.txt /d/QA/group_30/q1/qq1/T1/FOLDER1/Q3.txt
+chmod +x ./script.sh
+./script.sh
